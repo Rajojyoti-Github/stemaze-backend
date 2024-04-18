@@ -482,6 +482,21 @@ private String persueCountry1;
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", Name=" + Name + ", emailAddress=" + emailAddress + ", phoneNumbr="
+				+ phoneNumbr + ", countryOfOrigin=" + countryOfOrigin + ", lastDegree=" + lastDegree
+				+ ", yearOfCompletion=" + yearOfCompletion + ", currentDegree=" + currentDegree
+				+ ", expectedYearOfCompletion=" + expectedYearOfCompletion + ", careerInterest=" + careerInterest
+				+ ", interestInCareerAbroad=" + interestInCareerAbroad + ", persueCountry1=" + persueCountry1
+				+ ", persueCountry2=" + persueCountry2 + ", persueCountry3=" + persueCountry3 + ", topicsPhdSub1="
+				+ topicsPhdSub1 + ", topicsPhdSub2=" + topicsPhdSub2 + ", topicsPhdSub3=" + topicsPhdSub3
+				+ ", researchGate=" + researchGate + ", linkedInProfile=" + linkedInProfile + ", professionalInterest="
+				+ professionalInterest + ", uploadCv=" + uploadCv + ", uploadCoverLetter=" + uploadCoverLetter
+				+ ", createdTimeStamp=" + createdTimeStamp + ", updatedTimeStamp=" + updatedTimeStamp + ", updatedBy="
+				+ updatedBy + "]";
+	}
 		
 		
 	
