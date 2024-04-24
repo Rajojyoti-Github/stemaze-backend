@@ -2,6 +2,7 @@ package com.stemaze.stemazebackend.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,61 +10,86 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class UserEntity {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private String name;
-	
-	private String emailAddress;
-	
-	private String password;
-	
-	private String phoneNumbr;
-	
-	private String countryOfOrigin;
-	
-	private String lastDegree;
-	
-	private String yearOfCompletion;
-	
-	private String currentDegree;
-	
-	private String expectedYearOfCompletion;
-	
+	@Column (name = "career_interest")
 	private String careerInterest;
 	
+	@Column (name = "name")
+	private String name;
+	
+	@Column (name = "email_address")
+	private String emailAddress;
+	
+	@Column (name = "password")
+	private String password;
+	
+	@Column (name = "phone_numbr")
+	private String phoneNumbr;
+	
+	@Column (name = "country_of_origin")
+	private String countryOfOrigin;
+	
+	@Column (name = "last_degree")
+	private String lastDegree;
+	
+	@Column (name = "year_of_completion")
+	private String yearOfCompletion;
+	
+	@Column (name = "current_degree")
+	private String currentDegree;
+	
+	@Column (name = "expected_year_of_completion")
+	private String expectedYearOfCompletion;
+	
+	@Column (name = "interest_in_career_abroad")
 	private String interestInCareerAbroad;
 	
+	@Column (name = "persue_country1")
 	private String persueCountry1;
 	
+	@Column (name = "persue_country2")
 	private String persueCountry2;
 	
+	@Column (name = "persue_country3")
 	private String persueCountry3;
 	
+	@Column (name = "topics_phd_sub1")
 	private String topicsPhdSub1;
 	
+	@Column (name = "topics_phd_sub2")
 	private String topicsPhdSub2;
 	
+	@Column (name = "topics_phd_sub3")
 	private String topicsPhdSub3;
 	
+	@Column (name = "research_gate")
 	private String researchGate;
 	
+	@Column (name = "linked_in_profile")
 	private String linkedInProfile;
 	
+	@Column (name = "professional_interest")
 	private String professionalInterest;
 	
+	@Column (name = "upload_cv")
 	private String uploadCv;
 	
+	@Column (name = "upload_cover_letter")
 	private String uploadCoverLetter;
 	
+	@Column (name = "created_time_stamp")
 	private LocalDate createdTimeStamp;
 	
+	@Column (name = "updated_time_stamp")
 	private LocalDate updatedTimeStamp;
 	
+	@Column (name = "updated_by")
 	private String updatedBy;
 
 	/**
@@ -503,10 +529,10 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", name=" + name + ", emailAddress=" + emailAddress + ", password=" + password
-				+ ", phoneNumbr=" + phoneNumbr + ", countryOfOrigin=" + countryOfOrigin + ", lastDegree=" + lastDegree
-				+ ", yearOfCompletion=" + yearOfCompletion + ", currentDegree=" + currentDegree
-				+ ", expectedYearOfCompletion=" + expectedYearOfCompletion + ", careerInterest=" + careerInterest
+		return "UserEntity [id=" + id + ", careerInterest=" + careerInterest + ", name=" + name + ", emailAddress="
+				+ emailAddress + ", password=" + password + ", phoneNumbr=" + phoneNumbr + ", countryOfOrigin="
+				+ countryOfOrigin + ", lastDegree=" + lastDegree + ", yearOfCompletion=" + yearOfCompletion
+				+ ", currentDegree=" + currentDegree + ", expectedYearOfCompletion=" + expectedYearOfCompletion
 				+ ", interestInCareerAbroad=" + interestInCareerAbroad + ", persueCountry1=" + persueCountry1
 				+ ", persueCountry2=" + persueCountry2 + ", persueCountry3=" + persueCountry3 + ", topicsPhdSub1="
 				+ topicsPhdSub1 + ", topicsPhdSub2=" + topicsPhdSub2 + ", topicsPhdSub3=" + topicsPhdSub3
@@ -515,7 +541,8 @@ public class UserEntity {
 				+ ", createdTimeStamp=" + createdTimeStamp + ", updatedTimeStamp=" + updatedTimeStamp + ", updatedBy="
 				+ updatedBy + "]";
 	}
-		
+
+	
 		
 	
 	

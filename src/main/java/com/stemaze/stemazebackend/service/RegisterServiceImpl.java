@@ -174,68 +174,68 @@ public class RegisterServiceImpl implements RegisterService {
 		
 		UserEntity userEntity = userCreateDao.findByEmailAddress(user.getEmailAddress());
 		if(userEntity != null) {
-			UserEntity userUpdatedEntity = new UserEntity();
+//			UserEntity userUpdatedEntity = new UserEntity();
 			if(!StringUtils.isEmpty(user.getName())) {
-				userUpdatedEntity.setName(user.getName());
+				userEntity.setName(user.getName());
 			}
 			if(!StringUtils.isEmpty(user.getEmailAddress())) {
-				userUpdatedEntity.setEmailAddress(user.getEmailAddress());
+				userEntity.setEmailAddress(user.getEmailAddress());
 			}
 			if(!StringUtils.isEmpty(user.getPhoneNumbr())) {
-				userUpdatedEntity.setPhoneNumbr(user.getPhoneNumbr());
+				userEntity.setPhoneNumbr(user.getPhoneNumbr());
 			}
 			if(!StringUtils.isEmpty(user.getCountryOfOrigin())) {
-				userUpdatedEntity.setCountryOfOrigin(user.getCountryOfOrigin());
+				userEntity.setCountryOfOrigin(user.getCountryOfOrigin());
 			}
 			if(!StringUtils.isEmpty(user.getLastDegree())) {
-				userUpdatedEntity.setLastDegree(user.getLastDegree());
+				userEntity.setLastDegree(user.getLastDegree());
 			}
 			if(!StringUtils.isEmpty(user.getYearOfCompletion())) {
-				userUpdatedEntity.setYearOfCompletion(user.getYearOfCompletion());
+				userEntity.setYearOfCompletion(user.getYearOfCompletion());
 			}
 			if(!StringUtils.isEmpty(user.getCurrentDegree())) {
-				userUpdatedEntity.setCurrentDegree(user.getCurrentDegree());
+				userEntity.setCurrentDegree(user.getCurrentDegree());
 			}
 			if(!StringUtils.isEmpty(user.getExpectedYearOfCompletion())) {
-				userUpdatedEntity.setExpectedYearOfCompletion(user.getExpectedYearOfCompletion());
+				userEntity.setExpectedYearOfCompletion(user.getExpectedYearOfCompletion());
 			}
 			if(!StringUtils.isEmpty(user.getCareerInterest())) {
-				userUpdatedEntity.setCareerInterest(user.getCareerInterest());
+				userEntity.setCareerInterest(user.getCareerInterest());
 			}
 			if(!StringUtils.isEmpty(user.getInterestInCareerAbroad())) {
-				userUpdatedEntity.setInterestInCareerAbroad(user.getInterestInCareerAbroad());
+				userEntity.setInterestInCareerAbroad(user.getInterestInCareerAbroad());
 			}
 			if(!StringUtils.isEmpty(user.getPersueCountry1())) {
-				userUpdatedEntity.setPersueCountry1(user.getPersueCountry1());
+				userEntity.setPersueCountry1(user.getPersueCountry1());
 			}
 			if(!StringUtils.isEmpty(user.getPersueCountry2())) {
-				userUpdatedEntity.setPersueCountry2(user.getPersueCountry2());
+				userEntity.setPersueCountry2(user.getPersueCountry2());
 			}
 			if(!StringUtils.isEmpty(user.getPersueCountry3())) {
-				userUpdatedEntity.setPersueCountry3(user.getPersueCountry3());
+				userEntity.setPersueCountry3(user.getPersueCountry3());
 			}
 			if(!StringUtils.isEmpty(user.getTopicsPhdSub1())) {
-				userUpdatedEntity.setTopicsPhdSub1(user.getTopicsPhdSub1());
+				userEntity.setTopicsPhdSub1(user.getTopicsPhdSub1());
 			}
 			if(!StringUtils.isEmpty(user.getTopicsPhdSub2())) {
-				userUpdatedEntity.setTopicsPhdSub2(user.getTopicsPhdSub2());
+				userEntity.setTopicsPhdSub2(user.getTopicsPhdSub2());
 			}
 			if(!StringUtils.isEmpty(user.getTopicsPhdSub3())) {
-				userUpdatedEntity.setTopicsPhdSub3(user.getTopicsPhdSub3());
+				userEntity.setTopicsPhdSub3(user.getTopicsPhdSub3());
 			}
 			if(!StringUtils.isEmpty(user.getResearchGate())) {
-				userUpdatedEntity.setResearchGate(user.getResearchGate());
+				userEntity.setResearchGate(user.getResearchGate());
 			}
 			if(!StringUtils.isEmpty(user.getLinkedInProfile())) {
-				userUpdatedEntity.setLinkedInProfile(user.getLinkedInProfile());
+				userEntity.setLinkedInProfile(user.getLinkedInProfile());
 			}
 			if(!StringUtils.isEmpty(user.getProfessionalInterest())) {
-				userUpdatedEntity.setProfessionalInterest(user.getProfessionalInterest());
+				userEntity.setProfessionalInterest(user.getProfessionalInterest());
 			}
-			userUpdatedEntity.setUpdatedTimeStamp(LocalDate.now());
-			userUpdatedEntity.setUpdatedBy("System");
+			userEntity.setUpdatedTimeStamp(LocalDate.now());
+			userEntity.setUpdatedBy("System");
 			
-			userCreateDao.save(userUpdatedEntity);
+			userCreateDao.save(userEntity);
 			System.out.println("User has been successfully updated");
 			
 		}
