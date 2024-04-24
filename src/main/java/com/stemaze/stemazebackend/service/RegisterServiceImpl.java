@@ -28,6 +28,9 @@ public class RegisterServiceImpl implements RegisterService {
 				if(!StringUtils.isEmpty(user.getName())) {
 					userEntity.setName(user.getName());
 				}
+				if(!StringUtils.isEmpty(user.getPassword())) {
+					userEntity.setPassword(user.getPassword());
+				}
 				if(!StringUtils.isEmpty(user.getEmailAddress())) {
 					userEntity.setEmailAddress(user.getEmailAddress());
 				}
@@ -103,6 +106,9 @@ public class RegisterServiceImpl implements RegisterService {
 		if(userEntity != null) {
 			if(userEntity.getName() != null) {
 				myNewUser.setName(userEntity.getName());
+			}
+			if(userEntity.getPassword() != null) {
+				myNewUser.setPassword(userEntity.getPassword());
 			}
 			if(userEntity.getEmailAddress() != null) {
 				myNewUser.setEmailAddress(userEntity.getEmailAddress());

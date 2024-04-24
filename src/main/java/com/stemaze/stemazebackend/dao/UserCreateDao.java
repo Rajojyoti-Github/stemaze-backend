@@ -10,7 +10,7 @@ import com.stemaze.stemazebackend.entity.UserEntity;
 @Repository
 public interface UserCreateDao extends JpaRepository<UserEntity, Integer> {
 
-	@Query(value = "Select id from stemaze.user u where u.email_address = :emailAddress")
+	@Query(value = "Select id from stemaze.user u where u.email_address = :emailAddress", nativeQuery = true)
 	UserEntity findByEmailAddress(@Param("emailAddress") String emailAddress);
 
 }

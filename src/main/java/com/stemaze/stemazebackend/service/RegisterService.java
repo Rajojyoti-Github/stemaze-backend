@@ -1,12 +1,11 @@
 package com.stemaze.stemazebackend.service;
 
-import org.springframework.stereotype.Service;
 
 import com.stemaze.stemazebackend.dto.UserCreateDto;
 import com.stemaze.stemazebackend.dto.UserDto;
 import com.stemaze.stemazebackend.dto.UserLoginDto;
 
-@Service
+
 public interface RegisterService {
 
 	UserCreateDto createUser(UserDto user);
