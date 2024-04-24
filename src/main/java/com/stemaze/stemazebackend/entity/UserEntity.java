@@ -16,9 +16,11 @@ public class UserEntity {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private String Name;
+	private String name;
 	
 	private String emailAddress;
+	
+	private String password;
 	
 	private String phoneNumbr;
 	
@@ -36,7 +38,7 @@ public class UserEntity {
 	
 	private String interestInCareerAbroad;
 	
-private String persueCountry1;
+	private String persueCountry1;
 	
 	private String persueCountry2;
 	
@@ -82,14 +84,14 @@ private String persueCountry1;
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	/**
@@ -104,6 +106,20 @@ private String persueCountry1;
 	 */
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
@@ -414,6 +430,8 @@ private String persueCountry1;
 		this.updatedBy = updatedBy;
 	}
 
+	
+
 	/**
 	 * @param id
 	 * @param name
@@ -441,7 +459,7 @@ private String persueCountry1;
 	 * @param updatedTimeStamp
 	 * @param updatedBy
 	 */
-	public UserEntity(Integer id, String name, String emailAddress, String phoneNumbr, String countryOfOrigin,
+	public UserEntity(Integer id, String name, String emailAddress, String password, String phoneNumbr, String countryOfOrigin,
 			String lastDegree, String yearOfCompletion, String currentDegree, String expectedYearOfCompletion,
 			String careerInterest, String interestInCareerAbroad, String persueCountry1, String persueCountry2,
 			String persueCountry3, String topicsPhdSub1, String topicsPhdSub2, String topicsPhdSub3,
@@ -449,8 +467,9 @@ private String persueCountry1;
 			String uploadCoverLetter, LocalDate createdTimeStamp, LocalDate updatedTimeStamp, String updatedBy) {
 		super();
 		this.id = id;
-		Name = name;
+		this.name = name;
 		this.emailAddress = emailAddress;
+		this.password = password;
 		this.phoneNumbr = phoneNumbr;
 		this.countryOfOrigin = countryOfOrigin;
 		this.lastDegree = lastDegree;
@@ -480,13 +499,12 @@ private String persueCountry1;
 	 */
 	public UserEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", Name=" + Name + ", emailAddress=" + emailAddress + ", phoneNumbr="
-				+ phoneNumbr + ", countryOfOrigin=" + countryOfOrigin + ", lastDegree=" + lastDegree
+		return "UserEntity [id=" + id + ", name=" + name + ", emailAddress=" + emailAddress + ", password=" + password
+				+ ", phoneNumbr=" + phoneNumbr + ", countryOfOrigin=" + countryOfOrigin + ", lastDegree=" + lastDegree
 				+ ", yearOfCompletion=" + yearOfCompletion + ", currentDegree=" + currentDegree
 				+ ", expectedYearOfCompletion=" + expectedYearOfCompletion + ", careerInterest=" + careerInterest
 				+ ", interestInCareerAbroad=" + interestInCareerAbroad + ", persueCountry1=" + persueCountry1
