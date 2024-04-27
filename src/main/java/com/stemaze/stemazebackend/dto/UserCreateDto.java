@@ -45,6 +45,8 @@ public class UserCreateDto {
 	private String uploadCv;
 	
 	private String uploadCoverLetter;
+	
+	private String isKiitStudent;
 
 	/**
 	 * @return the name
@@ -353,6 +355,20 @@ public class UserCreateDto {
 	public void setUploadCoverLetter(String uploadCoverLetter) {
 		this.uploadCoverLetter = uploadCoverLetter;
 	}
+	
+	/**
+	 * @return the isKiitStudent
+	 */
+	public String getIsKiitStudent() {
+		return isKiitStudent;
+	}
+
+	/**
+	 * @param isKiitStudent the isKiitStudent to set
+	 */
+	public void setIsKiitStudent(String isKiitStudent) {
+		this.isKiitStudent = isKiitStudent;
+	}
 
 	/**
 	 * @param name
@@ -377,13 +393,14 @@ public class UserCreateDto {
 	 * @param professionalInterest
 	 * @param uploadCv
 	 * @param uploadCoverLetter
+	 * @param isKiitStudent
 	 */
 	public UserCreateDto(String name, String emailAddress, String password, String phoneNumbr, String countryOfOrigin,
 			String lastDegree, String yearOfCompletion, String currentDegree, String expectedYearOfCompletion,
 			String careerInterest, String interestInCareerAbroad, String persueCountry1, String persueCountry2,
 			String persueCountry3, String topicsPhdSub1, String topicsPhdSub2, String topicsPhdSub3,
 			String researchGate, String linkedInProfile, String professionalInterest, String uploadCv,
-			String uploadCoverLetter) {
+			String uploadCoverLetter, String isKiitStudent) {
 		super();
 		this.name = name;
 		this.emailAddress = emailAddress;
@@ -407,6 +424,7 @@ public class UserCreateDto {
 		this.professionalInterest = professionalInterest;
 		this.uploadCv = uploadCv;
 		this.uploadCoverLetter = uploadCoverLetter;
+		this.isKiitStudent = isKiitStudent;
 	}
 
 	/**
@@ -426,9 +444,9 @@ public class UserCreateDto {
 				+ ", persueCountry2=" + persueCountry2 + ", persueCountry3=" + persueCountry3 + ", topicsPhdSub1="
 				+ topicsPhdSub1 + ", topicsPhdSub2=" + topicsPhdSub2 + ", topicsPhdSub3=" + topicsPhdSub3
 				+ ", researchGate=" + researchGate + ", linkedInProfile=" + linkedInProfile + ", professionalInterest="
-				+ professionalInterest + ", uploadCv=" + uploadCv + ", uploadCoverLetter=" + uploadCoverLetter + "]";
+				+ professionalInterest + ", uploadCv=" + uploadCv + ", uploadCoverLetter=" + uploadCoverLetter
+				+ ", isKiitStudent=" + isKiitStudent + "]";
 	}
-	
-	
 
+	
 }

@@ -34,6 +34,16 @@ public class RegisterServiceImpl implements RegisterService {
 				if(!StringUtils.isEmpty(user.getEmailAddress())) {
 					userEntity.setEmailAddress(user.getEmailAddress());
 				}
+				if(!StringUtils.isEmpty(user.getEmailAddress())) {
+					String kiitStudentEmailDomain = "kiitbiotech.ac.in";
+					String currentStudentEmailAddress = user.getEmailAddress();
+					String currentStudentEmailDomain = currentStudentEmailAddress.substring(currentStudentEmailAddress.length() - 17);
+					if(kiitStudentEmailDomain.equalsIgnoreCase(currentStudentEmailDomain)) {
+						userEntity.setIsKiitStudent("Yes");
+					} else {
+						userEntity.setIsKiitStudent("No");
+					}
+				}
 				if(!StringUtils.isEmpty(user.getPhoneNumbr())) {
 					userEntity.setPhoneNumbr(user.getPhoneNumbr());
 				}
@@ -164,6 +174,9 @@ public class RegisterServiceImpl implements RegisterService {
 			if(userEntity.getProfessionalInterest() != null) {
 				myNewUser.setProfessionalInterest(user.getProfessionalInterest());
 			}
+			if(userEntity.getIsKiitStudent() != null) {
+				myNewUser.setIsKiitStudent(userEntity.getIsKiitStudent());
+			}
 		}
 		
 		return myNewUser;
@@ -279,7 +292,11 @@ public class RegisterServiceImpl implements RegisterService {
 
 	private UserCreateDto mapUserLoginToDto(UserLoginDto userLogin, boolean successParameter) {
 		
-		
+		if(successParameter) {
+			
+		} else {
+			
+		}
 		
 		return null;
 	}

@@ -91,6 +91,9 @@ public class UserEntity {
 	
 	@Column (name = "updated_by")
 	private String updatedBy;
+	
+	@Column(name = "is_kiit_student")
+	private String isKiitStudent;
 
 	/**
 	 * @return the id
@@ -456,19 +459,32 @@ public class UserEntity {
 		this.updatedBy = updatedBy;
 	}
 
-	
+	/**
+	 * @return the isKiitStudent
+	 */
+	public String getIsKiitStudent() {
+		return isKiitStudent;
+	}
+
+	/**
+	 * @param isKiitStudent the isKiitStudent to set
+	 */
+	public void setIsKiitStudent(String isKiitStudent) {
+		this.isKiitStudent = isKiitStudent;
+	}
 
 	/**
 	 * @param id
+	 * @param careerInterest
 	 * @param name
 	 * @param emailAddress
+	 * @param password
 	 * @param phoneNumbr
 	 * @param countryOfOrigin
 	 * @param lastDegree
 	 * @param yearOfCompletion
 	 * @param currentDegree
 	 * @param expectedYearOfCompletion
-	 * @param careerInterest
 	 * @param interestInCareerAbroad
 	 * @param persueCountry1
 	 * @param persueCountry2
@@ -484,15 +500,18 @@ public class UserEntity {
 	 * @param createdTimeStamp
 	 * @param updatedTimeStamp
 	 * @param updatedBy
+	 * @param isKiitStudent
 	 */
-	public UserEntity(Integer id, String name, String emailAddress, String password, String phoneNumbr, String countryOfOrigin,
-			String lastDegree, String yearOfCompletion, String currentDegree, String expectedYearOfCompletion,
-			String careerInterest, String interestInCareerAbroad, String persueCountry1, String persueCountry2,
-			String persueCountry3, String topicsPhdSub1, String topicsPhdSub2, String topicsPhdSub3,
-			String researchGate, String linkedInProfile, String professionalInterest, String uploadCv,
-			String uploadCoverLetter, LocalDate createdTimeStamp, LocalDate updatedTimeStamp, String updatedBy) {
+	public UserEntity(Integer id, String careerInterest, String name, String emailAddress, String password,
+			String phoneNumbr, String countryOfOrigin, String lastDegree, String yearOfCompletion, String currentDegree,
+			String expectedYearOfCompletion, String interestInCareerAbroad, String persueCountry1,
+			String persueCountry2, String persueCountry3, String topicsPhdSub1, String topicsPhdSub2,
+			String topicsPhdSub3, String researchGate, String linkedInProfile, String professionalInterest,
+			String uploadCv, String uploadCoverLetter, LocalDate createdTimeStamp, LocalDate updatedTimeStamp,
+			String updatedBy, String isKiitStudent) {
 		super();
 		this.id = id;
+		this.careerInterest = careerInterest;
 		this.name = name;
 		this.emailAddress = emailAddress;
 		this.password = password;
@@ -502,7 +521,6 @@ public class UserEntity {
 		this.yearOfCompletion = yearOfCompletion;
 		this.currentDegree = currentDegree;
 		this.expectedYearOfCompletion = expectedYearOfCompletion;
-		this.careerInterest = careerInterest;
 		this.interestInCareerAbroad = interestInCareerAbroad;
 		this.persueCountry1 = persueCountry1;
 		this.persueCountry2 = persueCountry2;
@@ -518,6 +536,7 @@ public class UserEntity {
 		this.createdTimeStamp = createdTimeStamp;
 		this.updatedTimeStamp = updatedTimeStamp;
 		this.updatedBy = updatedBy;
+		this.isKiitStudent = isKiitStudent;
 	}
 
 	/**
@@ -539,12 +558,8 @@ public class UserEntity {
 				+ ", researchGate=" + researchGate + ", linkedInProfile=" + linkedInProfile + ", professionalInterest="
 				+ professionalInterest + ", uploadCv=" + uploadCv + ", uploadCoverLetter=" + uploadCoverLetter
 				+ ", createdTimeStamp=" + createdTimeStamp + ", updatedTimeStamp=" + updatedTimeStamp + ", updatedBy="
-				+ updatedBy + "]";
+				+ updatedBy + ", isKiitStudent=" + isKiitStudent + "]";
 	}
 
 	
-		
-	
-	
-
 }
