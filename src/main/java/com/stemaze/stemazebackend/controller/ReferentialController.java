@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ public class ReferentialController {
 	@Autowired
 	ReferentialService referentialService;
 	
-	@PostMapping(value = "referential/dropdownList")
+	@GetMapping(value = "referential/dropdownList")
 	public ResponseEntity<List<DropDownDto>> dropdownList(@RequestBody(required = false) List<String> requestBody) {
 		logger.info("DropDown for the following items", requestBody);
 		List<DropDownDto> dropDownDto = referentialService.findDropDownList(requestBody);
