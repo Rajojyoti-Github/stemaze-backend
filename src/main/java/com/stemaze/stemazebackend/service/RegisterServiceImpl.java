@@ -2,6 +2,8 @@ package com.stemaze.stemazebackend.service;
 
 import java.time.LocalDate;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ public class RegisterServiceImpl implements RegisterService {
 	
 	@Autowired
 	UserCreateDao userCreateDao;
+	
+	private static final Logger logger = LoggerFactory.getLogger(AppointmentRegisterServiceImpl.class);
 
 	@Override
 	public UserCreateDto createUser(UserDto user) {
@@ -100,13 +104,13 @@ public class RegisterServiceImpl implements RegisterService {
 				userEntity.setUpdatedBy("System");
 
 				userCreateDao.save(userEntity);
-				System.out.println("User has been successfully registered");
+				logger.info("User has been successfully registered");
 				return mapUserToDto(user);
 			} else {
-				System.out.println("UserId is already present");
+				logger.info("UserId is already present");
 			}
 		}
-		System.out.println("UserId is already present");
+		logger.info("UserId is already present");
 		return null;
 	}
 
@@ -249,7 +253,7 @@ public class RegisterServiceImpl implements RegisterService {
 			userEntity.setUpdatedBy("System");
 			
 			userCreateDao.save(userEntity);
-			System.out.println("User has been successfully updated");
+			logger.info("User has been successfully updated");
 			
 		}
 		

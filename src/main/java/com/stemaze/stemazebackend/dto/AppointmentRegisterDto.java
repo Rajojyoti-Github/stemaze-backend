@@ -1,74 +1,43 @@
-package com.stemaze.stemazebackend.entity;
+package com.stemaze.stemazebackend.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "classbooking")
-public class ClassBookingEntity {
+public class AppointmentRegisterDto {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private long id;
 	
-	@Column(name = "user_name")
 	private String userName;
 	
-	@Column(name = "user_email")
 	private String userEmail;
 	
-	@Column(name = "user_mobile_number")
 	private String userMobileNumber;
 	
-	@Column(name = "mentor_name")
 	private String mentorName;
 	
-	@Column(name = "mentor_mobile_number")
 	private String mentorMobileNumber;
 	
-	@Column(name = "appointment_date")
 	private LocalDate appointmentDate;
 	
-	@Column(name = "appointment_time")
 	private LocalTime appointmentTime;
 	
-	@Column(name = "duration")
-	private String duration;
+	private String duraton;
 	
-	@Column(name = "amount")
 	private String amount;
 	
-	@Column(name = "time_zone")
 	private String timeZone;
-	
-	@Column(name = "current_date_time_stamp")
-	private LocalDateTime currentTimeStamp;
-	
-	@Column(name = "updated_date_time_stamp")
-	private LocalDateTime updatedTimeStamp;
-	
-	@Column(name = "updated_by")
-	private String updatedBy;
 
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -171,17 +140,17 @@ public class ClassBookingEntity {
 	}
 
 	/**
-	 * @return the duration
+	 * @return the duraton
 	 */
-	public String getDuration() {
-		return duration;
+	public String getDuraton() {
+		return duraton;
 	}
 
 	/**
-	 * @param duration the duration to set
+	 * @param duraton the duraton to set
 	 */
-	public void setDuration(String duration) {
-		this.duration = duration;
+	public void setDuraton(String duraton) {
+		this.duraton = duraton;
 	}
 
 	/**
@@ -213,45 +182,10 @@ public class ClassBookingEntity {
 	}
 
 	/**
-	 * @return the currentTimeStamp
+	 * 
 	 */
-	public LocalDateTime getCurrentTimeStamp() {
-		return currentTimeStamp;
-	}
-
-	/**
-	 * @param currentTimeStamp the currentTimeStamp to set
-	 */
-	public void setCurrentTimeStamp(LocalDateTime currentTimeStamp) {
-		this.currentTimeStamp = currentTimeStamp;
-	}
-
-	/**
-	 * @return the updatedTimeStamp
-	 */
-	public LocalDateTime getUpdatedTimeStamp() {
-		return updatedTimeStamp;
-	}
-
-	/**
-	 * @param updatedTimeStamp the updatedTimeStamp to set
-	 */
-	public void setUpdatedTimeStamp(LocalDateTime updatedTimeStamp) {
-		this.updatedTimeStamp = updatedTimeStamp;
-	}
-
-	/**
-	 * @return the updatedBy
-	 */
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	/**
-	 * @param updatedBy the updatedBy to set
-	 */
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
+	public AppointmentRegisterDto() {
+		super();
 	}
 
 	/**
@@ -263,17 +197,13 @@ public class ClassBookingEntity {
 	 * @param mentorMobileNumber
 	 * @param appointmentDate
 	 * @param appointmentTime
-	 * @param duration
+	 * @param duraton
 	 * @param amount
 	 * @param timeZone
-	 * @param currentTimeStamp
-	 * @param updatedTimeStamp
-	 * @param updatedBy
 	 */
-	public ClassBookingEntity(Integer id, String userName, String userEmail, String userMobileNumber, String mentorName,
-			String mentorMobileNumber, LocalDate appointmentDate, LocalTime appointmentTime, String duration,
-			String amount, String timeZone, LocalDateTime currentTimeStamp, LocalDateTime updatedTimeStamp,
-			String updatedBy) {
+	public AppointmentRegisterDto(long id, String userName, String userEmail, String userMobileNumber,
+			String mentorName, String mentorMobileNumber, LocalDate appointmentDate, LocalTime appointmentTime,
+			String duraton, String amount, String timeZone) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -283,28 +213,19 @@ public class ClassBookingEntity {
 		this.mentorMobileNumber = mentorMobileNumber;
 		this.appointmentDate = appointmentDate;
 		this.appointmentTime = appointmentTime;
-		this.duration = duration;
+		this.duraton = duraton;
 		this.amount = amount;
 		this.timeZone = timeZone;
-		this.currentTimeStamp = currentTimeStamp;
-		this.updatedTimeStamp = updatedTimeStamp;
-		this.updatedBy = updatedBy;
-	}
-
-	/**
-	 * 
-	 */
-	public ClassBookingEntity() {
-		super();
 	}
 
 	@Override
 	public String toString() {
-		return "ClassBookingEntity [id=" + id + ", userName=" + userName + ", userEmail=" + userEmail
+		return "AppointmentRegisterDto [id=" + id + ", userName=" + userName + ", userEmail=" + userEmail
 				+ ", userMobileNumber=" + userMobileNumber + ", mentorName=" + mentorName + ", mentorMobileNumber="
 				+ mentorMobileNumber + ", appointmentDate=" + appointmentDate + ", appointmentTime=" + appointmentTime
-				+ ", duration=" + duration + ", amount=" + amount + ", timeZone=" + timeZone + ", currentTimeStamp="
-				+ currentTimeStamp + ", updatedTimeStamp=" + updatedTimeStamp + ", updatedBy=" + updatedBy + "]";
+				+ ", duraton=" + duraton + ", amount=" + amount + ", timeZone=" + timeZone + "]";
 	}
 	
+	
+
 }

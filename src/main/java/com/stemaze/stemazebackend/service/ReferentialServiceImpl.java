@@ -31,8 +31,8 @@ public class ReferentialServiceImpl implements ReferentialService {
 			case "mentorNames":
 				dropDownDto.add(getMentorNames());
 				
-			case "isKiitStudent":
-				dropDownDto.add(isKiitStudent());
+//			case "isKiitStudent":
+//				dropDownDto.add(isKiitStudent());
 			
 			case "timezone":
 				dropDownDto.add(getTimeZones());
@@ -48,12 +48,12 @@ public class ReferentialServiceImpl implements ReferentialService {
 		return null;
 	}
 
-	private DropDownDto isKiitStudent() {
-		DropDownDto dropDownDto = new DropDownDto();
-		dropDownDto.setKey("isKiitStudent");
-		List<>
-		return null;
-	}
+//	private DropDownDto isKiitStudent() {
+//		DropDownDto dropDownDto = new DropDownDto();
+//		dropDownDto.setKey("isKiitStudent");
+//		List<>
+//		return null;
+//	}
 
 	private DropDownDto getMentorNames() {
 		DropDownDto dropDownDto = new DropDownDto();
