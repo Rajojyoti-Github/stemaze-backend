@@ -33,10 +33,10 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 			ClassBookingEntity entity = appointmentDao.getByMobileNumber(dto.getUserMobileNumber());
 			if(entity != null) {
 				logger.info("User already have an appointment");
-				appointmentEntity = convertAppointmentDtoToEntity(dto, entity);
+				appointmentEntity = convertAppointmentDtoToEntity(dto, appointmentEntity);
 			} else {
 				logger.info("User do not have an appointment");
-				appointmentEntity = convertAppointmentDtoToEntity(dto, entity);
+				appointmentEntity = convertAppointmentDtoToEntity(dto, appointmentEntity);
 			}
 			finalAppointmentEntity = appointmentDao.save(appointmentEntity);
 		}
