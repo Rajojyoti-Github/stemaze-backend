@@ -14,6 +14,8 @@ import com.stemaze.stemazebackend.dto.DropDownDto;
 import com.stemaze.stemazebackend.dto.DropDownInnerValuesDto;
 import com.stemaze.stemazebackend.entity.MentorEntity;
 
+import io.micrometer.common.util.StringUtils;
+
 @Service
 public class ReferentialServiceImpl implements ReferentialService {
 	
@@ -56,19 +58,48 @@ public class ReferentialServiceImpl implements ReferentialService {
 //	}
 
 	private DropDownDto getMentorNames() {
-		DropDownDto dropDownDto = new DropDownDto();
-		dropDownDto.setKey("");
-		List<MentorEntity> mentorEntity = mentorDao.getListOfMentor();
+		DropDownDto dropDownDtoMentorNames = new DropDownDto();
+		dropDownDtoMentorNames.setKey("mentorNames");
+		List<Object[]> mentorEntity = mentorDao.getListOfMentor();
 		logger.info("list of Mentors", mentorEntity);
-		List<DropDownDto> mentorDropDownList = new ArrayList<DropDownDto>();
-		DropDownInnerValuesDto dropDownInnerValuesDto = new DropDownInnerValuesDto();
-		for (MentorEntity mentor:mentorEntity) {
-			dropDownInnerValuesDto.setCode(mentorEntity.get(1).toString());
-			dropDownInnerValuesDto.setDescription(mentorEntity.get(1).toString());
-//			mentorDropDownList.add(mentor);	
+		List<DropDownInnerValuesDto> mentorNames = null;
+		dropDownDtoMentorNames.setValues(mentorNames);
+		if(mentorEntity != null) {
+			mentorNames = convertObjectToDto(mentorEntity, mergeCodeAndDescription());
 		}
+		return dropDownDtoMentorNames;
+	}
+
+
+	private List<DropDownInnerValuesDto> convertObjectToDto(List<Object[]> mentorEntity,
+			Boolean mergeCodeAndDescription) {
+		// TODO Auto-generated method stub
+		List<DropDownInnerValuesDto> beanList = new ArrayList<>();
 		
-		return dropDownDto;
+		for(Object[] objArr : mentorEntity) {
+			if(StringUtils.isNotBlank(((String) objArr[0]).trim())) {
+				DropDownInnerValuesDto bean = new DropDownInnerValuesDto();
+				if(objArr.length >1) {
+					bean.setCode((String) objArr[0]);
+					if(mergeCodeAndDescription) {
+						bean.setDescription((String) objArr[0] + " - " + (String) objArr[1]);
+					}
+					else {
+						bean.setDescription((String) objArr[0]);
+					}
+				}
+				else {
+					bean.setCode((String) objArr[0]);
+					bean.setDescription((String) objArr[0]);
+				}
+			}
+		}
+		return null;
+	}
+
+	
+	public boolean mergeCodeAndDescription() {
+	return true;
 	}
 	
 	

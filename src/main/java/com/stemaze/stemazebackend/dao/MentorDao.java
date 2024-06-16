@@ -10,8 +10,8 @@ import com.stemaze.stemazebackend.entity.MentorEntity;
 
 public interface MentorDao extends JpaRepository<MentorEntity, Integer>{
 
-	@Query(value = "select * from stemaze.mentor m", nativeQuery = true)
-	List<MentorEntity> getListOfMentor();
+	@Query(value = "select m.id, m.mentor_name from stemaze.mentor m", nativeQuery = true)
+	List<Object[]> getListOfMentor();
 
 	
 
