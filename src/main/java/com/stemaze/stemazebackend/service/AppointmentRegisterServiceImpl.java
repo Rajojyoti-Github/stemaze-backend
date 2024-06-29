@@ -2,6 +2,7 @@ package com.stemaze.stemazebackend.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -161,6 +162,20 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 			}
 		}
 		return appointmentRegisterDto;
+	}
+
+	@Override
+	public AppointmentRegisterDto getUser(String id) {
+		
+		AppointmentRegisterDto appointmentRegister = new AppointmentRegisterDto();
+		
+		return null;
+	}
+
+	@Override
+	public List<AppointmentRegisterDto> searchUser(AppointmentRequestRegisterDto dto) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

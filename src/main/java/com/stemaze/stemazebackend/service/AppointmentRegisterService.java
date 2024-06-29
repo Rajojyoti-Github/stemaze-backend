@@ -1,5 +1,7 @@
 package com.stemaze.stemazebackend.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.stemaze.stemazebackend.dto.AppointmentRegisterDto;
@@ -14,5 +16,10 @@ public interface AppointmentRegisterService {
 	AppointmentRegisterDto updateAppointment(AppointmentRequestRegisterDto dto);
 
 	AppointmentRegisterDto deleteAppointment(AppointmentRequestRegisterDto dto);
+
+	AppointmentRegisterDto getUser(String id);
+
+	List<AppointmentRegisterDto> searchUser(AppointmentRequestRegisterDto dto);
+
 
 }
