@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.stemaze.stemazebackend.dao.UserCreateDao;
@@ -12,16 +13,21 @@ import com.stemaze.stemazebackend.dto.UserCreateDto;
 import com.stemaze.stemazebackend.dto.UserDto;
 import com.stemaze.stemazebackend.dto.UserLoginDto;
 import com.stemaze.stemazebackend.entity.UserEntity;
+import com.stemaze.stemazebackend.util.UserSearchSpecification;
 
 import io.micrometer.common.util.StringUtils;
 
 @Service
 public class RegisterServiceImpl implements RegisterService {
 	
+	private static final Logger logger = LoggerFactory.getLogger(AppointmentRegisterServiceImpl.class);
+	
 	@Autowired
 	UserCreateDao userCreateDao;
 	
-	private static final Logger logger = LoggerFactory.getLogger(AppointmentRegisterServiceImpl.class);
+	@Autowired
+	UserSearchSpecification searchSpecification;
+	
 
 	@Override
 	public UserCreateDto createUser(UserDto user) {
@@ -116,8 +122,19 @@ public class RegisterServiceImpl implements RegisterService {
 
 	private UserCreateDto mapUserToDto(UserDto user) {
 		UserEntity userEntity = userCreateDao.findByEmailAddress(user.getEmailAddress());
+		UserCreateDto myNewUser = mapEntitytoDto(userEntity);
+		return myNewUser;
+	}
+
+	/**
+	 * @param user
+	 * @param userEntity
+	 * @param myNewUser
+	 */
+	public UserCreateDto  mapEntitytoDto(UserEntity userEntity) {
 		UserCreateDto myNewUser = new UserCreateDto();
 		if(userEntity != null) {
+			
 			if(userEntity.getName() != null) {
 				myNewUser.setName(userEntity.getName());
 			}
@@ -128,61 +145,60 @@ public class RegisterServiceImpl implements RegisterService {
 				myNewUser.setEmailAddress(userEntity.getEmailAddress());
 			}
 			if(userEntity.getPhoneNumbr() != null) {
-				myNewUser.setPhoneNumbr(user.getPhoneNumbr());
+				myNewUser.setPhoneNumbr(userEntity.getPhoneNumbr());
 			}
 			if(userEntity.getCountryOfOrigin() != null) {
-				myNewUser.setCountryOfOrigin(user.getCountryOfOrigin());
+				myNewUser.setCountryOfOrigin(userEntity.getCountryOfOrigin());
 			}
 			if(userEntity.getLastDegree() != null) {
-				myNewUser.setLastDegree(user.getLastDegree());
+				myNewUser.setLastDegree(userEntity.getLastDegree());
 			}
 			if(userEntity.getYearOfCompletion() != null) {
-				myNewUser.setYearOfCompletion(user.getYearOfCompletion());
+				myNewUser.setYearOfCompletion(userEntity.getYearOfCompletion());
 			}
 			if(userEntity.getCurrentDegree() != null) {
-				myNewUser.setCurrentDegree(user.getCurrentDegree());
+				myNewUser.setCurrentDegree(userEntity.getCurrentDegree());
 			}
 			if(userEntity.getExpectedYearOfCompletion() != null) {
-				myNewUser.setExpectedYearOfCompletion(user.getExpectedYearOfCompletion());
+				myNewUser.setExpectedYearOfCompletion(userEntity.getExpectedYearOfCompletion());
 			}
 			if(userEntity.getCareerInterest() != null) {
-				myNewUser.setCareerInterest(user.getCareerInterest());
+				myNewUser.setCareerInterest(userEntity.getCareerInterest());
 			}
 			if(userEntity.getInterestInCareerAbroad() != null) {
-				myNewUser.setInterestInCareerAbroad(user.getInterestInCareerAbroad());
+				myNewUser.setInterestInCareerAbroad(userEntity.getInterestInCareerAbroad());
 			}
 			if(userEntity.getPersueCountry1() != null) {
-				myNewUser.setPersueCountry1(user.getPersueCountry1());
+				myNewUser.setPersueCountry1(userEntity.getPersueCountry1());
 			}
 			if(userEntity.getPersueCountry2() != null) {
-				myNewUser.setPersueCountry2(user.getPersueCountry2());
+				myNewUser.setPersueCountry2(userEntity.getPersueCountry2());
 			}
 			if(userEntity.getPersueCountry3() != null) {
-				myNewUser.setPersueCountry3(user.getPersueCountry3());
+				myNewUser.setPersueCountry3(userEntity.getPersueCountry3());
 			}
 			if(userEntity.getTopicsPhdSub1() != null) {
-				myNewUser.setTopicsPhdSub1(user.getTopicsPhdSub1());
+				myNewUser.setTopicsPhdSub1(userEntity.getTopicsPhdSub1());
 			}
 			if(userEntity.getTopicsPhdSub2() != null) {
-				myNewUser.setTopicsPhdSub2(user.getTopicsPhdSub2());
+				myNewUser.setTopicsPhdSub2(userEntity.getTopicsPhdSub2());
 			}
 			if(userEntity.getTopicsPhdSub3() != null) {
-				myNewUser.setTopicsPhdSub3(user.getTopicsPhdSub3());
+				myNewUser.setTopicsPhdSub3(userEntity.getTopicsPhdSub3());
 			}
 			if(userEntity.getResearchGate() != null) {
-				myNewUser.setResearchGate(user.getResearchGate());
+				myNewUser.setResearchGate(userEntity.getResearchGate());
 			}
 			if(userEntity.getLinkedInProfile() != null) {
-				myNewUser.setLinkedInProfile(user.getLinkedInProfile());
+				myNewUser.setLinkedInProfile(userEntity.getLinkedInProfile());
 			}
 			if(userEntity.getProfessionalInterest() != null) {
-				myNewUser.setProfessionalInterest(user.getProfessionalInterest());
+				myNewUser.setProfessionalInterest(userEntity.getProfessionalInterest());
 			}
 			if(userEntity.getIsKiitStudent() != null) {
 				myNewUser.setIsKiitStudent(userEntity.getIsKiitStudent());
 			}
 		}
-		
 		return myNewUser;
 	}
 
@@ -267,9 +283,9 @@ public class RegisterServiceImpl implements RegisterService {
 		
 		if(userEntity != null) {
 			userCreateDao.delete(userEntity);
-			System.out.println("User has been successfully deleted");
+			logger.info("User has been successfully deleted");
 		} else {
-			System.out.println("User is not present in System");
+			logger.info("User is not present in System");
 		}
 		
 		return mapUserToDto(user);
@@ -303,6 +319,33 @@ public class RegisterServiceImpl implements RegisterService {
 		}
 		
 		return null;
+	}
+
+	@Override
+	public UserCreateDto getUser(String id) {
+		UserEntity userEntity = userCreateDao.findByUserId(Integer.valueOf(id));
+		UserCreateDto userDto = new UserCreateDto();
+		if(userEntity != null) {
+			userDto = mapExistingUserEntitytoDto(userEntity);
+		}
+		return userDto;
+	}
+
+	private UserCreateDto mapExistingUserEntitytoDto(UserEntity userEntity) {
+		UserCreateDto userCreateDto = new UserCreateDto();
+		userCreateDto = mapEntitytoDto(userEntity);
+		return userCreateDto;
+	}
+
+	@Override
+	public UserCreateDto searchUser(UserDto user) {
+		UserCreateDto searchedUser = new UserCreateDto();
+		Specification<UserEntity> spec = searchSpecification.getSearchSpec(user);
+		UserEntity userEntity = userCreateDao.findAll(spec);
+		if(userEntity != null) {
+			searchedUser = mapExistingUserEntitytoDto(userEntity);
+		}
+		return searchedUser;
 	}
 
 

@@ -44,5 +44,17 @@ public class UserController {
 		return new ResponseEntity<>(registerService.loginUser(userLogin), HttpStatus.OK);
 		
 	}
+	
+	@GetMapping(value = "/getUser")
+	public ResponseEntity<UserCreateDto> getUser(String id){
+		return new ResponseEntity<>(registerService.getUser(id), HttpStatus.OK);
+		
+	}
+	
+	@GetMapping(value = "/searchUser")
+	public ResponseEntity<UserCreateDto> searchUser(@RequestBody UserDto user){
+		return new ResponseEntity<> (registerService.searchUser(user), HttpStatus.OK);
+		
+	}
 
 }

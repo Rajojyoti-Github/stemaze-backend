@@ -15,6 +15,10 @@ public interface RegisterService {
 	UserCreateDto deleteUser(UserDto user);
 
 	UserCreateDto loginUser(UserLoginDto userLogin);
+
+	UserCreateDto getUser(String id);
+
+	UserCreateDto searchUser(UserDto user);
 	
 	
 
