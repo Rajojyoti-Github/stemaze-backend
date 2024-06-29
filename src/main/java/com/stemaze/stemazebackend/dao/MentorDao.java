@@ -13,9 +13,4 @@ public interface MentorDao extends JpaRepository<MentorEntity, Integer>{
 	@Query(value = "select m.id, m.mentor_name from stemaze.mentor m", nativeQuery = true)
 	List<Object[]> getListOfMentor();
 
-	
-
-	
-	
-
 }

@@ -14,7 +14,7 @@ public final class Constants {
 	
 	public static final String EMAIL_ADDRESS = "email_address";
 	
-	public static final String PHONE_NUMBER = "phone_numbr";
+	public static final String PHONE_NUMBER = "phone_number";
 	
 
 }

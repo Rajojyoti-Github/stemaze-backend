@@ -1,6 +1,8 @@
 package com.stemaze.stemazebackend.service;
 
 
+import java.util.List;
+
 import com.stemaze.stemazebackend.dto.UserCreateDto;
 import com.stemaze.stemazebackend.dto.UserDto;
 import com.stemaze.stemazebackend.dto.UserLoginDto;
@@ -18,7 +20,7 @@ public interface RegisterService {
 
 	UserCreateDto getUser(String id);
 
-	UserCreateDto searchUser(UserDto user);
+	List<UserCreateDto> searchUser(UserDto user);
 	
 	
 

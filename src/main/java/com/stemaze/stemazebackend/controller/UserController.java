@@ -1,5 +1,7 @@
 package com.stemaze.stemazebackend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +54,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/searchUser")
-	public ResponseEntity<UserCreateDto> searchUser(@RequestBody UserDto user){
+	public ResponseEntity<List<UserCreateDto>> searchUser(@RequestBody UserDto user){
 		return new ResponseEntity<> (registerService.searchUser(user), HttpStatus.OK);
 		
 	}

@@ -1,6 +1,9 @@
 package com.stemaze.stemazebackend.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,8 +57,8 @@ public class RegisterServiceImpl implements RegisterService {
 						userEntity.setIsKiitStudent("No");
 					}
 				}
-				if(!StringUtils.isEmpty(user.getPhoneNumbr())) {
-					userEntity.setPhoneNumbr(user.getPhoneNumbr());
+				if(!StringUtils.isEmpty(user.getPhoneNumber())) {
+					userEntity.setPhoneNumber(user.getPhoneNumber());
 				}
 				if(!StringUtils.isEmpty(user.getCountryOfOrigin())) {
 					userEntity.setCountryOfOrigin(user.getCountryOfOrigin());
@@ -144,8 +147,8 @@ public class RegisterServiceImpl implements RegisterService {
 			if(userEntity.getEmailAddress() != null) {
 				myNewUser.setEmailAddress(userEntity.getEmailAddress());
 			}
-			if(userEntity.getPhoneNumbr() != null) {
-				myNewUser.setPhoneNumbr(userEntity.getPhoneNumbr());
+			if(userEntity.getPhoneNumber() != null) {
+				myNewUser.setPhoneNumber(userEntity.getPhoneNumber());
 			}
 			if(userEntity.getCountryOfOrigin() != null) {
 				myNewUser.setCountryOfOrigin(userEntity.getCountryOfOrigin());
@@ -214,8 +217,8 @@ public class RegisterServiceImpl implements RegisterService {
 			if(!StringUtils.isEmpty(user.getEmailAddress())) {
 				userEntity.setEmailAddress(user.getEmailAddress());
 			}
-			if(!StringUtils.isEmpty(user.getPhoneNumbr())) {
-				userEntity.setPhoneNumbr(user.getPhoneNumbr());
+			if(!StringUtils.isEmpty(user.getPhoneNumber())) {
+				userEntity.setPhoneNumber(user.getPhoneNumber());
 			}
 			if(!StringUtils.isEmpty(user.getCountryOfOrigin())) {
 				userEntity.setCountryOfOrigin(user.getCountryOfOrigin());
@@ -338,12 +341,12 @@ public class RegisterServiceImpl implements RegisterService {
 	}
 
 	@Override
-	public UserCreateDto searchUser(UserDto user) {
-		UserCreateDto searchedUser = new UserCreateDto();
+	public List<UserCreateDto> searchUser(UserDto user) {
+		List<UserCreateDto> searchedUser = new ArrayList();
 		Specification<UserEntity> spec = searchSpecification.getSearchSpec(user);
-		UserEntity userEntity = userCreateDao.findAll(spec);
-		if(userEntity != null) {
-			searchedUser = mapExistingUserEntitytoDto(userEntity);
+		List<UserEntity> userEntities = userCreateDao.findAll(spec);
+		if(userEntities != null) {
+			searchedUser = userEntities.stream().map(entity -> mapExistingUserEntitytoDto(entity)).collect(Collectors.toList());
 		}
 		return searchedUser;
 	}

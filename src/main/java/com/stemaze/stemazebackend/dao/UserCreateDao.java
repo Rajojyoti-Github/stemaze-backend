@@ -1,5 +1,7 @@
 package com.stemaze.stemazebackend.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +19,6 @@ public interface UserCreateDao extends JpaRepository<UserEntity, Integer> {
 	@Query(value = "Select * from stemaze.user u where u.id = :id", nativeQuery = true)
 	UserEntity findByUserId(@Param ("id") Integer id);
 
-	UserEntity findAll(Specification<UserEntity> spec);
+	List<UserEntity> findAll(Specification<UserEntity> spec);
 
 }

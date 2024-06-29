@@ -9,7 +9,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stemaze.stemazebackend.dao.ApprovedUniversityDao;
 import com.stemaze.stemazebackend.dao.MentorDao;
+import com.stemaze.stemazebackend.dao.TimeZoneDao;
 import com.stemaze.stemazebackend.dto.DropDownDto;
 import com.stemaze.stemazebackend.dto.DropDownInnerValuesDto;
 import com.stemaze.stemazebackend.entity.MentorEntity;
@@ -23,6 +25,12 @@ public class ReferentialServiceImpl implements ReferentialService {
 	
 	@Autowired
 	MentorDao mentorDao;
+	
+	@Autowired
+	ApprovedUniversityDao approvedUniversityDao;
+	
+	@Autowired
+	TimeZoneDao timeZoneDao;
 
 	@Override
 	public List<DropDownDto> findDropDownList(List<String> key) {
@@ -49,12 +57,13 @@ public class ReferentialServiceImpl implements ReferentialService {
 	private DropDownDto isKiitStudent() {
 		DropDownDto dropDownDtoTimeZones = new DropDownDto();
 		dropDownDtoTimeZones.setKey("isKiitStudent");
-		List<Object[]> isKiitStudentEntity = mentorDao.getListOfMentor();
+		List<Object[]> isKiitStudentEntity = approvedUniversityDao.getIsApprovedUniversity();
 		logger.info("list of TimeZones", isKiitStudentEntity);
 		List<DropDownInnerValuesDto> isKiitStudent = null;
 		dropDownDtoTimeZones.setValues(isKiitStudent);
 		if(isKiitStudentEntity != null) {
 			isKiitStudent = convertObjectToDto(isKiitStudentEntity, !mergeCodeAndDescription());
+			dropDownDtoTimeZones.setValues(isKiitStudent);
 		}
 		return dropDownDtoTimeZones;
 	}
@@ -63,12 +72,13 @@ public class ReferentialServiceImpl implements ReferentialService {
 	private DropDownDto getTimeZones() {
 		DropDownDto dropDownDtoTimeZones = new DropDownDto();
 		dropDownDtoTimeZones.setKey("timezone");
-		List<Object[]> timeZoneEntity = mentorDao.getListOfMentor();
+		List<Object[]> timeZoneEntity = timeZoneDao.getListTimeZone();
 		logger.info("list of TimeZones", timeZoneEntity);
 		List<DropDownInnerValuesDto> timeZones = null;
 		dropDownDtoTimeZones.setValues(timeZones);
 		if(timeZoneEntity != null) {
 			timeZones = convertObjectToDto(timeZoneEntity, !mergeCodeAndDescription());
+			dropDownDtoTimeZones.setValues(timeZones);
 		}
 		return dropDownDtoTimeZones;
 	}
@@ -84,11 +94,12 @@ public class ReferentialServiceImpl implements ReferentialService {
 		DropDownDto dropDownDtoMentorNames = new DropDownDto();
 		dropDownDtoMentorNames.setKey("mentorNames");
 		List<Object[]> mentorEntity = mentorDao.getListOfMentor();
-		logger.info("list of Mentors", mentorEntity);
+		logger.info("list of Yes. No:", mentorEntity);
 		List<DropDownInnerValuesDto> mentorNames = null;
 		dropDownDtoMentorNames.setValues(mentorNames);
 		if(mentorEntity != null) {
 			mentorNames = convertObjectToDto(mentorEntity, !mergeCodeAndDescription());
+			dropDownDtoMentorNames.setValues(mentorNames);
 		}
 		return dropDownDtoMentorNames;
 	}
@@ -100,20 +111,20 @@ public class ReferentialServiceImpl implements ReferentialService {
 		List<DropDownInnerValuesDto> beanList = new ArrayList<>();
 		
 		for(Object[] objArr : mentorEntity) {
-			if(StringUtils.isNotBlank(((String) objArr[0]).trim())) {
+			if(objArr[0] != null) {
 				DropDownInnerValuesDto bean = new DropDownInnerValuesDto();
 				if(objArr.length >1) {
-					bean.setCode((String) objArr[0]);
+					bean.setCode( objArr[0].toString());
 					if(mergeCodeAndDescription) {
-						bean.setDescription((String) objArr[0] + " - " + (String) objArr[1]);
+						bean.setDescription(objArr[0].toString() + " - " + objArr[1].toString());
 					}
 					else {
-						bean.setDescription((String) objArr[1]);
+						bean.setDescription(objArr[1].toString());
 					}
 				}
 				else {
-					bean.setCode((String) objArr[0]);
-					bean.setDescription((String) objArr[0]);
+					bean.setCode(objArr[0].toString());
+					bean.setDescription(objArr[0].toString());
 				}
 				beanList.add(bean);
 			}

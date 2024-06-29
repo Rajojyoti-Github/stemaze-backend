@@ -29,8 +29,8 @@ public class UserEntity {
 	@Column (name = "password")
 	private String password;
 	
-	@Column (name = "phone_numbr")
-	private String phoneNumbr;
+	@Column (name = "phone_number")
+	private String phoneNumber;
 	
 	@Column (name = "country_of_origin")
 	private String countryOfOrigin;
@@ -154,15 +154,15 @@ public class UserEntity {
 	/**
 	 * @return the phoneNumbr
 	 */
-	public String getPhoneNumbr() {
-		return phoneNumbr;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	/**
 	 * @param phoneNumbr the phoneNumbr to set
 	 */
-	public void setPhoneNumbr(String phoneNumbr) {
-		this.phoneNumbr = phoneNumbr;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	/**
@@ -503,7 +503,7 @@ public class UserEntity {
 	 * @param isKiitStudent
 	 */
 	public UserEntity(Integer id, String careerInterest, String name, String emailAddress, String password,
-			String phoneNumbr, String countryOfOrigin, String lastDegree, String yearOfCompletion, String currentDegree,
+			String phoneNumber, String countryOfOrigin, String lastDegree, String yearOfCompletion, String currentDegree,
 			String expectedYearOfCompletion, String interestInCareerAbroad, String persueCountry1,
 			String persueCountry2, String persueCountry3, String topicsPhdSub1, String topicsPhdSub2,
 			String topicsPhdSub3, String researchGate, String linkedInProfile, String professionalInterest,
@@ -515,7 +515,7 @@ public class UserEntity {
 		this.name = name;
 		this.emailAddress = emailAddress;
 		this.password = password;
-		this.phoneNumbr = phoneNumbr;
+		this.phoneNumber = phoneNumber;
 		this.countryOfOrigin = countryOfOrigin;
 		this.lastDegree = lastDegree;
 		this.yearOfCompletion = yearOfCompletion;
@@ -549,7 +549,7 @@ public class UserEntity {
 	@Override
 	public String toString() {
 		return "UserEntity [id=" + id + ", careerInterest=" + careerInterest + ", name=" + name + ", emailAddress="
-				+ emailAddress + ", password=" + password + ", phoneNumbr=" + phoneNumbr + ", countryOfOrigin="
+				+ emailAddress + ", password=" + password + ", phoneNumber=" + phoneNumber + ", countryOfOrigin="
 				+ countryOfOrigin + ", lastDegree=" + lastDegree + ", yearOfCompletion=" + yearOfCompletion
 				+ ", currentDegree=" + currentDegree + ", expectedYearOfCompletion=" + expectedYearOfCompletion
 				+ ", interestInCareerAbroad=" + interestInCareerAbroad + ", persueCountry1=" + persueCountry1

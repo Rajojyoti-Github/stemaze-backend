@@ -8,7 +8,7 @@ public class UserCreateDto {
 	
 	private String password;
 	
-	private String phoneNumbr;
+	private String phoneNumber;
 	
 	private String countryOfOrigin;
 	
@@ -93,15 +93,15 @@ public class UserCreateDto {
 	/**
 	 * @return the phoneNumbr
 	 */
-	public String getPhoneNumbr() {
-		return phoneNumbr;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 	/**
 	 * @param phoneNumbr the phoneNumbr to set
 	 */
-	public void setPhoneNumbr(String phoneNumbr) {
-		this.phoneNumbr = phoneNumbr;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	/**
@@ -395,7 +395,7 @@ public class UserCreateDto {
 	 * @param uploadCoverLetter
 	 * @param isKiitStudent
 	 */
-	public UserCreateDto(String name, String emailAddress, String password, String phoneNumbr, String countryOfOrigin,
+	public UserCreateDto(String name, String emailAddress, String password, String phoneNumber, String countryOfOrigin,
 			String lastDegree, String yearOfCompletion, String currentDegree, String expectedYearOfCompletion,
 			String careerInterest, String interestInCareerAbroad, String persueCountry1, String persueCountry2,
 			String persueCountry3, String topicsPhdSub1, String topicsPhdSub2, String topicsPhdSub3,
@@ -405,7 +405,7 @@ public class UserCreateDto {
 		this.name = name;
 		this.emailAddress = emailAddress;
 		this.password = password;
-		this.phoneNumbr = phoneNumbr;
+		this.phoneNumber = phoneNumber;
 		this.countryOfOrigin = countryOfOrigin;
 		this.lastDegree = lastDegree;
 		this.yearOfCompletion = yearOfCompletion;
@@ -437,7 +437,7 @@ public class UserCreateDto {
 	@Override
 	public String toString() {
 		return "UserCreateDto [name=" + name + ", emailAddress=" + emailAddress + ", password=" + password
-				+ ", phoneNumbr=" + phoneNumbr + ", countryOfOrigin=" + countryOfOrigin + ", lastDegree=" + lastDegree
+				+ ", phoneNumber=" + phoneNumber + ", countryOfOrigin=" + countryOfOrigin + ", lastDegree=" + lastDegree
 				+ ", yearOfCompletion=" + yearOfCompletion + ", currentDegree=" + currentDegree
 				+ ", expectedYearOfCompletion=" + expectedYearOfCompletion + ", careerInterest=" + careerInterest
 				+ ", interestInCareerAbroad=" + interestInCareerAbroad + ", persueCountry1=" + persueCountry1
