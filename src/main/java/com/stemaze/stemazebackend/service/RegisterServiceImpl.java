@@ -342,7 +342,7 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Override
 	public List<UserCreateDto> searchUser(UserDto user) {
-		List<UserCreateDto> searchedUser = new ArrayList();
+		List<UserCreateDto> searchedUser = new ArrayList<UserCreateDto>();
 		Specification<UserEntity> spec = searchSpecification.getSearchSpec(user);
 		List<UserEntity> userEntities = userCreateDao.findAll(spec);
 		if(userEntities != null) {

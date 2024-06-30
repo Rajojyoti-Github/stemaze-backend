@@ -2,12 +2,15 @@ package com.stemaze.stemazebackend.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,6 +18,7 @@ import com.stemaze.stemazebackend.dao.AppointmentDao;
 import com.stemaze.stemazebackend.dto.AppointmentRegisterDto;
 import com.stemaze.stemazebackend.dto.AppointmentRequestRegisterDto;
 import com.stemaze.stemazebackend.entity.ClassBookingEntity;
+import com.stemaze.stemazebackend.util.AppointmentSearchSpecification;
 
 @Service
 public class AppointmentRegisterServiceImpl implements AppointmentRegisterService {
@@ -22,6 +26,8 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 	@Autowired
 	AppointmentDao appointmentDao;
 	
+	@Autowired
+	AppointmentSearchSpecification appointmentSearchSpecification;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AppointmentRegisterServiceImpl.class);
 
@@ -178,8 +184,14 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 
 	@Override
 	public List<AppointmentRegisterDto> searchUser(AppointmentRequestRegisterDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<AppointmentRegisterDto> searchedAppointment = new ArrayList<AppointmentRegisterDto>();
+		Specification<ClassBookingEntity> bookingSpec = appointmentSearchSpecification.getSearchSpec(dto);
+		List<ClassBookingEntity> bookingEntities = appointmentDao.findAll(bookingSpec);
+		if(bookingEntities != null) {
+			searchedAppointment = bookingEntities.stream().map(entity -> (convertEntitytoDTO(entity))).collect(Collectors.toList());
+		}
+		return searchedAppointment;
 	}
 	
 	
