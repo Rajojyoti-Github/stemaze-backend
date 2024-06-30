@@ -3,6 +3,7 @@ package com.stemaze.stemazebackend.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -164,12 +165,15 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 		return appointmentRegisterDto;
 	}
 
-	@Override
-	public AppointmentRegisterDto getUser(String id) {
+	public AppointmentRegisterDto getUser(Integer id) {
 		
 		AppointmentRegisterDto appointmentRegister = new AppointmentRegisterDto();
+		ClassBookingEntity appointmentEntity = appointmentDao.getReferenceById(id);
+		if(appointmentEntity != null) {
+			appointmentRegister = convertEntitytoDTO(appointmentEntity);
+		}
 		
-		return null;
+		return appointmentRegister;
 	}
 
 	@Override

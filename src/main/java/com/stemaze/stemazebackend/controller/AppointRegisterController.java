@@ -42,7 +42,7 @@ public class AppointRegisterController {
 	}
 	
 	@GetMapping(value = "/getAppointmment")
-	public ResponseEntity<AppointmentRegisterDto> getUser(String id){
+	public ResponseEntity<AppointmentRegisterDto> getUser(Integer id){
 		return new ResponseEntity<>(appointmentRegisterService.getUser(id), HttpStatus.OK);
 		
 	}

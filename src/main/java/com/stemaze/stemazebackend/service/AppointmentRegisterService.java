@@ -17,7 +17,7 @@ public interface AppointmentRegisterService {
 
 	AppointmentRegisterDto deleteAppointment(AppointmentRequestRegisterDto dto);
 
-	AppointmentRegisterDto getUser(String id);
+	AppointmentRegisterDto getUser(Integer id);
 
 	List<AppointmentRegisterDto> searchUser(AppointmentRequestRegisterDto dto);
 

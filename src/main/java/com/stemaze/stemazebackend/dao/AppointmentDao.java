@@ -13,6 +13,7 @@ public interface AppointmentDao extends JpaRepository<ClassBookingEntity, Intege
 	@Query(value = "Select * from stemaze.classbooking u where u.user_mobile_number = :userMobileNumber", nativeQuery = true)
 	ClassBookingEntity getByMobileNumber(@Param("userMobileNumber") String userMobileNumber);
 	
-	
+	@Query(value = "Select * from stemaze.classbooking u where u.id = :id", nativeQuery = true)
+	ClassBookingEntity getEntitybyId(@Param ("id") String id);
 
 }
