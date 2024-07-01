@@ -41,10 +41,10 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 			ClassBookingEntity entity = appointmentDao.getByMobileNumber(dto.getUserMobileNumber());
 			if(entity != null) {
 				logger.info("User already have an appointment");
-				appointmentEntity = convertAppointmentDtoToEntity(dto, appointmentEntity);
+				appointmentEntity = convertAppointmentDtoToEntity(dto, appointmentEntity, false);
 			} else {
 				logger.info("User do not have an appointment");
-				appointmentEntity = convertAppointmentDtoToEntity(dto, appointmentEntity);
+				appointmentEntity = convertAppointmentDtoToEntity(dto, appointmentEntity, false);
 			}
 			finalAppointmentEntity = appointmentDao.save(appointmentEntity);
 		}
@@ -98,7 +98,7 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 	 * @param entity
 	 * @return 
 	 */
-	private ClassBookingEntity convertAppointmentDtoToEntity(AppointmentRequestRegisterDto dto, ClassBookingEntity entity) {
+	private ClassBookingEntity convertAppointmentDtoToEntity(AppointmentRequestRegisterDto dto, ClassBookingEntity entity, Boolean update) {
 		
 		if(StringUtils.hasLength(dto.getUserName())) {
 			entity.setUserName(dto.getUserName());
@@ -130,7 +130,9 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 		if(StringUtils.hasLength(dto.getAmount())) {
 			entity.setAmount(dto.getAmount());
 		}
-		entity.setCurrentTimeStamp(LocalDateTime.now());
+		if(!update) {
+			entity.setCurrentTimeStamp(LocalDateTime.now());
+		}
 		entity.setUpdatedTimeStamp(LocalDateTime.now());
 		entity.setUpdatedBy("System");
 		return entity;
@@ -145,7 +147,7 @@ public class AppointmentRegisterServiceImpl implements AppointmentRegisterServic
 			ClassBookingEntity entity = appointmentDao.getReferenceById(dto.getId());
 			try {
 				if(entity != null) {
-					appointmentEntity = convertAppointmentDtoToEntity(dto, entity);
+					appointmentEntity = convertAppointmentDtoToEntity(dto, entity, true);
 					finalAppointmentEntity = appointmentDao.save(appointmentEntity);
 					appointmentRegisterDto = convertEntitytoDTO(finalAppointmentEntity);
 				}
